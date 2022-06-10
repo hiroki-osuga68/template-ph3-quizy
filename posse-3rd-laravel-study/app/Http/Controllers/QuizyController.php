@@ -15,7 +15,7 @@ class QuizyController extends Controller
         // モデルを用いて都道府県テーブルのレコードを取得（こちらでは全ての地域を表示）
         $prefectures = Prefecture::all();
         // viewの第2引数に変数を指定し、bladeで利用可能にする
-        return view('layouts/app', compact('prefectures'));
+        return view('layouts/start', compact('prefectures'));
     }
 
     public function page($id)
