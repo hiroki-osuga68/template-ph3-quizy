@@ -17,7 +17,7 @@
 
 {{-- <body> --}}
     @section('content')
-    <div class="flex-center position-ref full-height">
+    <div class="mx-auto text-center">
         {{-- @if (Route::has('login'))
             <div class="top-right links">
                 @auth
@@ -32,12 +32,12 @@
             </div>
         @endif --}}
 
-        <div class="content">
-            <p>都道府県の選択</p>
-            <div class="title m-b-md">
+        <div class="">
+            <p class="h2">都道府県の選択</p>
+            <div class="h2 d-inline-block">
                 {{-- {{ $id }}.{{ $title }}の難読地名クイズ --}}
                 @foreach ($prefectures as $prefecture)
-                    <a href={{route('page', ['id' => $prefecture->id])}} class='d-blok'>
+                    <a href={{route('page', ['id' => $prefecture->id])}} class=''>
                         <p>{{ $prefecture['name'] }}の難読地名クイズ</p>
                     </a>
                 @endforeach
