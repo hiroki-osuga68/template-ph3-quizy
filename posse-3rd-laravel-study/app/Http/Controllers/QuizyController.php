@@ -18,16 +18,17 @@ class QuizyController extends Controller
         return view('layouts/start', compact('prefectures'));
     }
 
+    // Laravel 青本 p65 ルーティングのidがコントローラのメソッドに引数として渡される
     public function page($id)
     {
         // モデルを用いて都道府県テーブルのレコードを取得
         // withメソッド・・Eager loadingでSQL的にJoin、ドットでつなげてまとめて取得可能
-        // select * from `questions` where `prefectures`.`id` in ($id);
+        // どの都道府県なのか特定する$idをfindする
         $prefecture = Prefecture::with('questions.choices')->find($id);
         // dd($prefecture->questions);
         // dd($prefecture->choices);
 
         // viewの第2引数に変数を指定し、bladeで利用可能にする
-        return view('choice', compact('prefecture'));
+        return view('quizy', compact('prefecture'));
     }
 }
