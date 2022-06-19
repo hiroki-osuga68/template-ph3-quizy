@@ -48,3 +48,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'QuizyController@index')->name('index');
 // 都道府県ごとの問題ページ
 Route::get('/quiz/{id}', 'QuizyController@page')->name('page');
+
+// 管理画面
+Route::get('/edit_title', 'AdmintitleController@index')->name('admin_title_index');
