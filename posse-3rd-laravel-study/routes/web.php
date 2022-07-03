@@ -50,4 +50,10 @@ Route::get('/', 'QuizyController@index')->name('index');
 Route::get('/quiz/{id}', 'QuizyController@page')->name('page');
 
 // 管理画面
-Route::get('/edit_title', 'AdmintitleController@index')->name('admin_title_index');
+Route::prefix('edit_title')->group(function () {
+Route::get('/', 'AdmintitleController@index')->name('edit_title.index');
+Route::post('/', 'AdmintitleController@store')->name('edit_title.store');
+// 編集ルーティング
+Route::get('/edit/{id}','AdmintitleController@edit')->name('edit_title.edit');
+Route::post('/update/{id}','AdmintitleController@update')->name('edit_title.update');
+});
