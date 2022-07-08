@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    //ホワイトリスト
     protected $fillable = [
         'image',
         'prefecture_id',

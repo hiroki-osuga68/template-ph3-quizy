@@ -3,29 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// ファサードのメリット・・クラスをインスタンス化しなくてもstaticメソッドのようにメソッドを実行できる
-// ※ファサードも内部的には、DBクラスがインスタンス化されて、そのインスタンスメソッドであるtableが呼ばれているので、記述は::だが静的メソッドではない
-
-// 通常
-// $db = new DB();
-// $db->table();
-
-// ファサード利用
-// DBクラス・・Illuminate\Support\Facades\Facadeクラスを継承したクラスとして定義される
-
-// DB::table();・・・・(new DB())->table();と等価
-
-// ファサードでtableメソッドを呼び出した時、指定したテーブルの「ビルダ」を取得でき、クエリビルダのメソッドが自由に使えるようになる
-// DB::table('テーブル名')->メソッド()のように記述する。
-
-
-// ※Eloquentの利用
-// Userモデルクラス・・Illuminate\Database\Eloquent\ModelのModelクラスを継承したクラスとして定義される
-
-// User::find(1);・・・・(new User())->find(1);と等価（findはクエリビルダのメソッド）
-
-// Eloquentではtableメソッドを記述せずともクエリビルダを利用することができる
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,9 +14,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -56,4 +30,5 @@ Route::post('/', 'AdmintitleController@store')->name('edit_title.store');
 // 編集ルーティング
 Route::get('/edit/{id}','AdmintitleController@edit')->name('edit_title.edit');
 Route::post('/update/{id}','AdmintitleController@update')->name('edit_title.update');
+Route::post('/destroy/{id}','AdmintitleController@destroy')->name('edit_title.destroy');
 });
