@@ -20,3 +20,89 @@ Userモデルクラス・・Illuminate\Database\Eloquent\ModelのModelクラス�
 User::find(1);・・・・(new User())->find(1);と等価（findはクエリビルダのメソッド）
 
 Eloquentではtableメソッドを記述せずともクエリビルダを利用することができる
+
+
+
+**ドラッグアンドドロップ情報をDB保存の場合はこちらを使うか
+// jQuery(function ($) {
+
+//   let lists = $('ul.list-group li')
+//   lists.on('dragstart', onDragStart)
+//   lists.on('dragover', onDragOver)
+//   lists.on('dragleave', onDragLeave)
+//   lists.on('drop', onDrop)
+
+//   $('form').submit(updateOrder)
+
+//   function onDragStart(e) {
+//     e.originalEvent.dataTransfer.setData('text', $(this).data('id'))
+//   }
+
+//   function onDragOver(e) {
+//     e.preventDefault()
+
+//     if ((e.offsetY) < ($(this).innerHeight() / 2)) {
+//       //マウスカーソルの位置が要素の半分より上
+//       $(this).css({
+//         'border-top': '2px solid blue',
+//         'border-bottom': '',
+//       })
+//     } else {
+//       //マウスカーソルの位置が要素の半分より下
+//       $(this).css({
+//         'border-top': '',
+//         'border-bottom': '2px solid blue',
+//       })
+//     }
+//   }
+
+//   function onDragLeave(e) {
+//     $(this).css({
+//       'border-top': '',
+//       'border-bottom': '',
+//     })
+//   }
+
+//   function onDrop(e) {
+//     e.preventDefault()
+//     let id = e.originalEvent.dataTransfer.getData('text')
+
+//     if ((e.offsetY) < ($(this).innerHeight() / 2)) {
+//       $('li[data-id=\'' + id + '\']').insertBefore(this)
+//     } else {
+//       $('li[data-id=\'' + id + '\']').insertAfter(this)
+//     }
+//     $(this).css({
+//       'border-top': '',
+//       'border-bottom': '',
+//     })
+
+//   }
+
+//   function updateOrder() {
+//     let listOrder = []
+//     $('ul.list-group li').each(function () {
+//       listOrder.push($(this).data('id'))
+//     })
+
+//     $('#list_order').val(listOrder.join(','))
+
+//     console.log($('#list_order').val())
+//   }
+
+// })
+
+**html
+
+<form>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action" data-id="1" draggable="true">項目１</li>
+            <li class="list-group-item list-group-item-action" data-id="2" draggable="true">項目２</li>
+            <li class="list-group-item list-group-item-action" data-id="3" draggable="true">項目３</li>
+            <li class="list-group-item list-group-item-action" data-id="4" draggable="true">項目４</li>
+            <li class="list-group-item list-group-item-action" data-id="5" draggable="true">項目５</li>
+        </ul>
+
+        <input type="hidden" name="list_order" id="list_order">
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
