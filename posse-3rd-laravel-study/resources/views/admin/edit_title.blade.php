@@ -21,9 +21,9 @@
                         <th>削除</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="prefectureItems">
                     @foreach ($prefectures as $prefecture)
-                        <tr>
+                        <tr data-id="{{ $prefecture->id }}">
                             <td>
                                 {{-- <a href="edit_title/{{ $prefecture->id }}">{{ $prefecture->name }}の難読地名クイズ</a> --}}
                                 <div><span class="font-weight-bold">{{ $prefecture->name }}</span>の難読地名クイズ</div>
@@ -45,3 +45,8 @@
         </section>
     </div>
 @endsection
+
+{{-- 特定のjsの読み込み --}}
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+@endpush

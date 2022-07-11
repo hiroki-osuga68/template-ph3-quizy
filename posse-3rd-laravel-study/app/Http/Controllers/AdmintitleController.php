@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class AdmintitleController extends Controller
 {
+  // 未ログインの場合は、ログイン画面に遷移させる
+  public function __construct(){
+    $this->middleware('auth');
+  }
+
   public function index()
   {
     $prefectures = Prefecture::all();
