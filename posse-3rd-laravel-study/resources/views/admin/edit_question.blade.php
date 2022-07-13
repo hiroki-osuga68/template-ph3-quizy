@@ -29,7 +29,9 @@
                             <td>
                                 <div>
                                     {{-- <img src="/images/{{ $question->image }}" alt=""> --}}
-                                    <img src="{{ asset('storage/temp/' . $question->image) }}" alt="" width="15%">
+                                    <a href="{{ route("edit_choice.index", ['question_id' =>$question->id]) }}">
+                                        <img src="{{ asset('storage/temp/' . $question->image) }}" alt="" width="15%">
+                                    </a>
                                 </div>
                             </td>
                             <td>

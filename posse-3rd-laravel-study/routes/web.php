@@ -43,3 +43,12 @@ Route::prefix('edit_question')->group(function () {
     Route::post('/update/{id}', 'AdminquestionController@update')->name('edit_question.update');
     Route::post('/destroy/{id}', 'AdminquestionController@destroy')->name('edit_question.destroy');
 });
+
+// 選択肢管理
+Route::prefix('edit_choice')->group(function () {
+    Route::get('/{question_id}', 'AdminchoiceController@index')->name('edit_choice.index');
+    Route::post('/{question_id}', 'AdminchoiceController@store')->name('edit_choice.store');
+    Route::get('/edit/{id}', 'AdminchoiceController@edit')->name('edit_choice.edit');
+    Route::post('/update/{id}', 'AdminchoiceController@update')->name('edit_choice.update');
+    Route::post('/destroy/{id}', 'AdminchoiceController@destroy')->name('edit_choice.destroy');
+});

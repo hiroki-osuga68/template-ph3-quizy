@@ -21,6 +21,7 @@ class AdminquestionController extends Controller
   public function store(Request $request)
   {
     $question = new Question;
+    // ↓$requestでinputタグのnameをわざわざ送らなくても、questionインスタンスからprefecture_idにアクセスできるか
     $prefecture_id = $request->prefecture_id;
 
     // 画像データ保存:storage/app/public
