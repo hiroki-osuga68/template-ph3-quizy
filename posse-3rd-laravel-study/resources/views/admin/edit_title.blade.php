@@ -25,8 +25,9 @@
                     @foreach ($prefectures as $prefecture)
                         <tr data-id="{{ $prefecture->id }}">
                             <td>
-                                {{-- <a href="edit_title/{{ $prefecture->id }}">{{ $prefecture->name }}の難読地名クイズ</a> --}}
-                                <div><span class="font-weight-bold">{{ $prefecture->name }}</span>の難読地名クイズ</div>
+                                <div>
+                                    <a href="edit_question/{{ $prefecture->id }}"><span class="font-weight-bold">{{ $prefecture->name }}</span>の難読地名クイズ</a>
+                                </div>
                             </td>
                             <td>
                                 <a href="edit_title/edit/{{ $prefecture->id }}" class="btn btn-sm btn-primary">編集</a>
@@ -48,5 +49,7 @@
 
 {{-- 特定のjsの読み込み --}}
 @push('scripts')
+    {{-- タイトル編集js --}}
+    <script src="{{ asset('js/edit_title.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 @endpush

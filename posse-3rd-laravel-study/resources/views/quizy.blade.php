@@ -6,7 +6,8 @@
         @foreach ($prefecture->questions as $question)
             <section class="">
                 <h4 class="outline d-inline">{{ $loop->iteration }}.この地名はなんて読む？</h4>
-                <img src="/images/{{ $question->image }}" alt="画像{{ $loop->iteration }}" class="">
+                {{-- <img src="/images/{{ $question->image }}" alt="画像{{ $loop->iteration }}" class=""> --}}
+                <img src="{{ asset('storage/temp/' . $question->image) }}" alt="画像{{ $loop->iteration }}">
                 <ul class="lists-arrange">
                     {{-- 参考：https://readouble.com/laravel/6.x/ja/collections.html --}}
                     {{-- shuffleメソッド・・コレクションのアイテムをランダムにシャッフル。 --}}
